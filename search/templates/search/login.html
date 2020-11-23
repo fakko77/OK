@@ -1,0 +1,28 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+{% load static %}
+        <section class="page-section bg-primary" id="about">
+            <div class="container">
+                       <h1> Connexion </h1> <br>
+                <div class="row justify-content-center">
+
+                    <form method="post"  role="form" action="{% url 'connect' %}">
+                        {% csrf_token %}
+                        <input type="text" name="username" placeholder="Utilisateur">
+                        <br> <br>
+                        <input type="password" name="password" placeholder="Mot de passe">
+                        <br>                        <br>
+
+                            <input type="submit" value="GO!" />
+                            </form>
+
+
+                    </div>
+                                        <br>
+                                    <a href="{% url 'singup' %}"><p>Inscription</p></a>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

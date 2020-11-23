@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        {% load static %}
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'search/css/styles.css' %}" />
+        <script src="{% static 'search/js/scripts.js' %}"></script>
+        <<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <img class="logo" src="{% static 'search/assets/img/logo_pur_beurre.png' %}" />
+                <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}">Pur-beurre</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <form  action="{%url 'product' %}" method="get" class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                        <i class="fas fa-search fa-3x" aria-hidden="true"></i>
+                                    <input id="searchForm" class="form-control" name="query" placeholder="search..">
+
+                        </form>
+                        {% if user.is_authenticated %}
+                          <div>
+                            </div>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'account' %}"><i class="fas fa-user-alt fa-3x"></i></a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'my-food' %}"> <i class="fas fa-carrot fa-3x"></i></a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-3x"></i></a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logint' %}"><i class="fas fa-sign-in-alt fa-3x"></i></a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+
+       {% block content %}{% endblock %}
+
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div></div>
+            <a href="{% url 'legal' %}"><div class="container"><div class="small text-center text-muted">Mention legal</div></div></a>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

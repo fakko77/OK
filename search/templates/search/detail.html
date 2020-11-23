@@ -1,0 +1,67 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+{% load static %}
+        <section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <span>
+                                <h2>{{product_selected.name}}</h2>
+                                <p>{{product_selected.category_product.name}}</p>
+                              <div class="container" >
+                                  <span class="dot"><p class="score"> <p>{{product_selected.score}}</p></p></span>
+                                <img  class="rounded mb-2" src="{{ product_selected.img_url }}" alt="{{ product_selected.name }}">
+
+                              </div>
+                            <br>
+                            <p>{{product_selected.ingredient}}</p>
+                            <form action="{{product_selected.url}}">
+                                <input class="btn btn-primary btn-xl js-scroll-trigger" type="submit" value="voir la fiche d'openfoodfacts" />
+                            </form>
+                            {% if product_selected in fav %}
+                                <a href="{% url 'delete' product_id=product_selected.id %}"><i class="fas fa-save fa-3x red"></i></a>
+                                {% else %}
+                                <a href="{% url 'favorite' product_id=product_selected.id %}"><i class="fas fa-save fa-3x green"></i></a>
+                                {% endif %}
+                            </span>
+                        <hr>
+                        <h2 class="text-white mt-0">Produit de substitution:</h2>
+                        <div id="produit_sub">
+
+                            {% for product_sub in product_sub %}
+                            <span class="sub-obj">
+                                <a href="{% url 'detail' product_id=product_sub.id %}">
+                                    <div class="container" >
+                                <span class="dot"><p class="score">{{product_sub.score}}</p></span>
+                                <img  class="rounded mb-2" src="{{ product_sub.img_url }}" alt="{{ product_sub.name }}"  >
+                                         </div>
+                                     <h3>{{product_sub.name}}</h3>
+                                 </a>
+                                {% if product_sub in fav %}
+                                <a href="{% url 'delete' product_id=product_sub.id %}"><i class="fas fa-save fa-3x red"></i></a>
+                                {% else %}
+                                <a href="{% url 'favorite' product_id=product_sub.id %}"><i class="fas fa-save fa-3x green"></i></a>
+                                {% endif %}
+                            </span>
+
+
+                            {% endfor %}
+                        </div>
+<H1>ICI</H1>
+                          <nav aria-label="...">
+    <ul class="pager">
+      {% if product_sub.has_previous %}
+          <li><a href="?page={{ product_sub.previous_page_number }}">Précédent</a></li>
+      {% endif %}
+      {% if product_sub.has_next %}
+          <li><a href="?page={{ product_sub.next_page_number }}">Suivant</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+{% load static %}
+<section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <span>
+
+                        </span>
+                         <h2 class="text-white mt-0">Produits de Enregistrés:</h2>
+                        <div id="produit_sub">
+                            {% for product_selected in product_selected %}
+                            <span class="sub-obj">
+                                <a href="{% url 'detail' product_id=product_selected.id %}">
+                                    <div class="container" >
+                                <span class="dot"><p class="score">{{product_selected.score}}</p></span>
+                                <img  class="rounded mb-2" src="{{ product_selected.img_url }}" alt="{{ product_selected.name }}"  >
+                                         </div>
+                                     <h3>{{product_selected.name}}</h3>
+
+
+
+                                 </a>
+                              <a href="{% url 'delete' product_id=product_selected.id %}"><i class="fas fa-save fa-3x red"></i></a>
+
+                            </span>
+
+                            {% endfor %}
+                        </div>
+
+                                    {{fav}}
+
+                </div>
+            </div>
+</section>
+
+
+{% endblock %}

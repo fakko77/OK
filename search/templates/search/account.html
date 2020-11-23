@@ -1,0 +1,24 @@
+{% extends 'search/base.html' %}
+
+{% block content %}
+{% load static %}
+<section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <span>
+
+                        </span>
+                         <h2 class="text-white mt-0">bonjour</h2>
+                        <h3>{{request.user.username}}</h3>
+                        <br>
+                        <h2>Votre email:</h2>
+                        <input type="text" id="name" name="name" disabled
+                          placeholder="{{request.user.email}}">
+
+                </div>
+            </div>
+</section>
+
+
+{% endblock %}
